@@ -47,7 +47,11 @@ async function processPullRequest(): Promise<object> {
                     pullRequest.state,
                     pullRequest.merged
                   )}">${pullRequest.title}</font> has been ${
-                    pullRequest.merged ? 'merged' : pullRequest.state
+                    pullRequest.merged
+                      ? 'merged'
+                      : pullRequest.state === 'open'
+                      ? 'opened'
+                      : pullRequest.state
                   }</br>`
                 }
               }
